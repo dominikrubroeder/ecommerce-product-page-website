@@ -1,8 +1,11 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useContext } from 'react';
 import { IProduct } from '../../data';
+import { CartContext } from '../../context/CartContext';
 
 const CartItem: React.FC<IProduct> = (props) => {
+  const cartCtx = useContext(CartContext);
+
   return (
     <div className="flex items-center gap-2">
       <div className="shrink-0 flex items-center">
@@ -29,7 +32,10 @@ const CartItem: React.FC<IProduct> = (props) => {
           </p>
         </div>
 
-        <button className="shrink-0" onClick={() => props.delete(props.id)}>
+        <button
+          className="shrink-0"
+          onClick={() => cartCtx?.deleteProduct(props.id)}
+        >
           <Image
             src="/images/icon-delete.svg"
             width={14}

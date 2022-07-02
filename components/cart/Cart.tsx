@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Image from 'next/image';
-import { IProduct, cartItemsData } from '../../data';
 import CartItem from './CartItem';
+import { CartContext } from '../../context/CartContext';
 
 const Cart: React.FC = () => {
+  const cartCtx = useContext(CartContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<IProduct[]>(cartItemsData);
-
-  const deleteCartItem = (cartItemId: string) => {
-    setCartItems((previousState) =>
-      previousState.filter((cartItem) => cartItem.id !== cartItemId)
-    );
-  };
 
   return (
     <div className="relative">
@@ -19,7 +13,7 @@ const Cart: React.FC = () => {
         className="absolute -top-1 -right-2 z-40 flex items-center text-white text-[8px] bg-app-primary-orange px-2 rounded-full cursor-pointer"
         onClick={() => setIsOpen((previousState) => !previousState)}
       >
-        {cartItems.length}
+        {cartCtx?.cartItems.length}
       </div>
 
       <Image
@@ -32,12 +26,12 @@ const Cart: React.FC = () => {
       />
 
       {isOpen && (
-        <div className="fixed top-16 left-0 right-0 drop-shadow-lg rounded-md bg-white m-2 sm:absolute sm:top-8 sm:right-0 sm:left-auto sm:w-80 sm:m-auto">
+        <div className="fixed top-16 left-0 right-0 drop-shadow-lg rounded-md bg-white m-2 z-50 sm:absolute sm:top-8 sm:right-0 sm:left-auto sm:w-80 sm:m-auto">
           <header className="border-b">
             <div className="font-bold p-4">Cart</div>
           </header>
           <div className="p-4">
-            {cartItems.length === 0 && (
+            {cartCtx?.cartItems.length === 0 && (
               <div className="min-h-[10rem] flex items-center justify-center">
                 <p className="text-app-neutral-blue-grayish-dark">
                   Your cart is empty.
@@ -46,9 +40,9 @@ const Cart: React.FC = () => {
             )}
 
             <div className="grid gap-4">
-              {cartItems.length > 0 && (
+              {cartCtx!.cartItems.length > 0 && (
                 <ul className="grid gap-2">
-                  {cartItems.map((cartItem, index) => (
+                  {cartCtx?.cartItems.map((cartItem, index) => (
                     <li key={index}>
                       <CartItem
                         id={cartItem.id}
@@ -60,7 +54,6 @@ const Cart: React.FC = () => {
                         thumbnails={cartItem.thumbnails}
                         manufacturer={cartItem.manufacturer}
                         discount={cartItem.discount}
-                        delete={deleteCartItem}
                       />
                     </li>
                   ))}

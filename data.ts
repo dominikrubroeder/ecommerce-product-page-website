@@ -8,8 +8,13 @@ export interface IProduct {
   thumbnails: string[];
   manufacturer: string;
   discount: number;
-  delete: (id: string) => void;
 }
+
+export type CartContextType = {
+  cartItems: IProduct[];
+  addProduct: (product: IProduct) => void;
+  deleteProduct: (productId: string) => void;
+};
 
 export const productList: IProduct[] = [
   {
@@ -33,7 +38,6 @@ export const productList: IProduct[] = [
     ],
     manufacturer: 'Sneaker company',
     discount: 0.5,
-    delete: () => {},
   },
 ];
 

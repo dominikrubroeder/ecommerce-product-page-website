@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { IProduct } from '../data';
 import Image from 'next/image';
+import { CartContext } from '../context/CartContext';
 
 interface ProductInformationProps {
   product: IProduct;
 }
 
 const ProductInformation: React.FC<ProductInformationProps> = (props) => {
+  const cartCtx = useContext(CartContext);
   const [amount, setAmount] = useState(0);
 
   const increaseAmount = () => {
@@ -19,15 +21,6 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
     if (amount === 0) return;
 
     setAmount((previousState) => previousState - 1);
-  };
-
-  const addToCart = () => {
-    const productToAdd = {
-      ...props.product,
-      amount,
-    };
-
-    console.log(productToAdd);
   };
 
   return (
@@ -94,8 +87,13 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
 
           <button
             className="text-white font-bold rounded-lg p-4 bg-app-primary-orange flex items-center justify-center gap-2 flex-1"
-            onClick={addToCart}
-            disabled={amount > 0}
+            onClick={() =>
+              cartCtx?.addProduct({
+                ...props.product,
+                amount,
+              })
+            }
+            disabled={amount === 0}
           >
             <Image
               src="/images/icon-cart.svg"
