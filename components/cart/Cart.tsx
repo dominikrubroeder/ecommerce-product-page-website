@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ICartItem, cartItemsData } from '../../data';
+import CartItem from './CartItem';
 
 const Cart: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,20 +30,37 @@ const Cart: React.FC = () => {
           <header className="border-b">
             <div className="font-bold p-4">Cart</div>
           </header>
-          <div className="flex items-center justify-center min-h-[10rem]">
+          <div className="p-4">
             {cartItems.length === 0 && (
-              <p className="text-app-neutral-blue-grayish-dark">
-                Your cart is empty.
-              </p>
+              <div className="min-h-[10rem] flex items-center justify-center">
+                <p className="text-app-neutral-blue-grayish-dark">
+                  Your cart is empty.
+                </p>
+              </div>
             )}
 
-            {cartItems.length > 0 && (
-              <ul>
-                {cartItems.map((cartItem, index) => (
-                  <li key={index}>{cartItem.title}</li>
-                ))}
-              </ul>
-            )}
+            <div className="grid gap-4">
+              {cartItems.length > 0 && (
+                <ul className="grid gap-2">
+                  {cartItems.map((cartItem, index) => (
+                    <li key={index}>
+                      <CartItem
+                        id={cartItem.id}
+                        title={cartItem.title}
+                        value={cartItem.value}
+                        amount={cartItem.amount}
+                        images={cartItem.images}
+                        thumbnails={cartItem.thumbnails}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <button className="text-white font-bold rounded-lg p-3 bg-app-primary-orange">
+                Checkout
+              </button>
+            </div>
           </div>
         </div>
       )}
