@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Cart from '../Cart';
+import Cart from '../cart/Cart';
 import PageNavigation from './PageNavigation';
 import Sidebar from './Sidebar';
 

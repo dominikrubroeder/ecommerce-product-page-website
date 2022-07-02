@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { ICartItem, cartItemsData } from '../../data';
 
 const Cart: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cartItems, setCartItems] = useState<ICartItem[]>(cartItemsData);
 
   return (
     <div className="relative">
@@ -10,8 +12,9 @@ const Cart: React.FC = () => {
         className="absolute -top-1 -right-2 z-40 flex items-center text-white text-[8px] bg-app-primary-orange px-2 rounded-full cursor-pointer"
         onClick={() => setIsOpen((previousState) => !previousState)}
       >
-        0
+        {cartItems.length}
       </div>
+
       <Image
         src="/images/icon-cart.svg"
         width={22}
@@ -27,9 +30,19 @@ const Cart: React.FC = () => {
             <div className="font-bold p-4">Cart</div>
           </header>
           <div className="flex items-center justify-center min-h-[10rem]">
-            <p className="text-app-neutral-blue-grayish-dark">
-              Your cart is empty.
-            </p>
+            {cartItems.length === 0 && (
+              <p className="text-app-neutral-blue-grayish-dark">
+                Your cart is empty.
+              </p>
+            )}
+
+            {cartItems.length > 0 && (
+              <ul>
+                {cartItems.map((cartItem, index) => (
+                  <li key={index}>{cartItem.title}</li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       )}
