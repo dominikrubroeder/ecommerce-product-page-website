@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ICartItem, cartItemsData } from '../../data';
+import { IProduct, cartItemsData } from '../../data';
 import CartItem from './CartItem';
 
 const Cart: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<ICartItem[]>(cartItemsData);
+  const [cartItems, setCartItems] = useState<IProduct[]>(cartItemsData);
 
   const deleteCartItem = (cartItemId: string) => {
     setCartItems((previousState) =>
@@ -32,7 +32,7 @@ const Cart: React.FC = () => {
       />
 
       {isOpen && (
-        <div className="absolute top-8 drop-shadow rounded-sm bg-white w-80 p-2 right-0">
+        <div className="fixed top-16 left-0 right-0 drop-shadow-lg rounded-md bg-white m-2 sm:absolute sm:top-8 sm:right-0 sm:left-auto sm:w-80 sm:m-auto">
           <header className="border-b">
             <div className="font-bold p-4">Cart</div>
           </header>
@@ -54,9 +54,12 @@ const Cart: React.FC = () => {
                         id={cartItem.id}
                         title={cartItem.title}
                         value={cartItem.value}
+                        description={cartItem.description}
                         amount={cartItem.amount}
                         images={cartItem.images}
                         thumbnails={cartItem.thumbnails}
+                        manufacturer={cartItem.manufacturer}
+                        discount={cartItem.discount}
                         delete={deleteCartItem}
                       />
                     </li>

@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
-import { ICartItem } from '../../data';
+import { IProduct } from '../../data';
 
-const CartItem: React.FC<ICartItem> = (props) => {
+const CartItem: React.FC<IProduct> = (props) => {
   return (
     <div className="flex items-center gap-2">
       <div className="shrink-0 flex items-center">

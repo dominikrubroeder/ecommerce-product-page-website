@@ -1,6 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import PageHeader from '../components/layout/PageHeader';
+import ProductGallery from '../components/ProductGallery';
+import ProductInformation from '../components/ProductInformation';
+import { cartItemsData } from '../data';
 
 const Home: NextPage = () => {
   return (
@@ -13,11 +16,17 @@ const Home: NextPage = () => {
 
       <PageHeader />
 
-      <main>
-        <h1 className="text-xl">Hello, world</h1>
-      </main>
+      <main className="">
+        <div className="grid gap-8 m-auto px-4 md:grid-cols-2 md:max-w-6xl">
+          <div className="flex items-center justify-center max-w-md">
+            <ProductGallery product={cartItemsData[0]} />
+          </div>
 
-      <footer>Page footer</footer>
+          <div className="flex items-center justify-center max-w-md">
+            <ProductInformation product={cartItemsData[0]} />
+          </div>
+        </div>
+      </main>
     </div>
   );
 };

@@ -1,19 +1,24 @@
-export interface ICartItem {
+export interface IProduct {
   id: string;
   title: string;
   value: number;
+  description: string;
   amount: number;
   images: string[];
   thumbnails: string[];
+  manufacturer: string;
+  discount: number;
   delete: (id: string) => void;
 }
 
-export const cartItemsData: ICartItem[] = [
+export const productList: IProduct[] = [
   {
     id: (Date.now() + Math.random()).toString(),
     title: 'Fall Limited Edition Sneakers',
     value: 250,
-    amount: 2,
+    description:
+      'These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer',
+    amount: 1,
     images: [
       '/images/image-product-1.jpg',
       '/images/image-product-2.jpg',
@@ -26,9 +31,13 @@ export const cartItemsData: ICartItem[] = [
       '/images/image-product-3-thumbnail.jpg',
       '/images/image-product-4-thumbnail.jpg',
     ],
+    manufacturer: 'Sneaker company',
+    discount: 0.5,
     delete: () => {},
   },
 ];
+
+export const cartItemsData: IProduct[] = [productList[0]];
 
 export const navigationData = [
   {
