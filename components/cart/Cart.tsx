@@ -7,6 +7,12 @@ const Cart: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState<ICartItem[]>(cartItemsData);
 
+  const deleteCartItem = (cartItemId: string) => {
+    setCartItems((previousState) =>
+      previousState.filter((cartItem) => cartItem.id !== cartItemId)
+    );
+  };
+
   return (
     <div className="relative">
       <div
@@ -51,6 +57,7 @@ const Cart: React.FC = () => {
                         amount={cartItem.amount}
                         images={cartItem.images}
                         thumbnails={cartItem.thumbnails}
+                        delete={deleteCartItem}
                       />
                     </li>
                   ))}

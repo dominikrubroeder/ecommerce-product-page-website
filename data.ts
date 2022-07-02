@@ -5,6 +5,7 @@ export interface ICartItem {
   amount: number;
   images: string[];
   thumbnails: string[];
+  delete: (id: string) => void;
 }
 
 export const cartItemsData: ICartItem[] = [
@@ -25,6 +26,7 @@ export const cartItemsData: ICartItem[] = [
       '/images/image-product-3-thumbnail.jpg',
       '/images/image-product-4-thumbnail.jpg',
     ],
+    delete: () => {},
   },
 ];
 

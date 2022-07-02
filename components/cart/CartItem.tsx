@@ -29,7 +29,7 @@ const CartItem: React.FC<ICartItem> = (props) => {
           </p>
         </div>
 
-        <button className="shrink-0">
+        <button className="shrink-0" onClick={() => props.delete(props.id)}>
           <Image
             src="/images/icon-delete.svg"
             width={14}
