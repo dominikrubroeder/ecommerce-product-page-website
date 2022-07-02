@@ -6,6 +6,12 @@ const Cart: React.FC = () => {
 
   return (
     <div className="relative">
+      <div
+        className="absolute -top-1 -right-2 z-40 flex items-center text-white text-[8px] bg-app-primary-orange px-2 rounded-full cursor-pointer"
+        onClick={() => setIsOpen((previousState) => !previousState)}
+      >
+        0
+      </div>
       <Image
         src="/images/icon-cart.svg"
         width={22}
@@ -16,7 +22,7 @@ const Cart: React.FC = () => {
       />
 
       {isOpen && (
-        <div className="absolute drop-shadow rounded-sm bg-white min-w-[20rem] right-0">
+        <div className="absolute top-8 drop-shadow rounded-sm bg-white w-80 p-2 right-0">
           <header className="border-b">
             <div className="font-bold p-4">Cart</div>
           </header>
