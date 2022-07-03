@@ -11,7 +11,7 @@ const Checkout: NextPage = () => {
         <link rel="icon" type="image/png" href="/images/favicon-32x32.png" />
       </Head>
 
-      <main className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen">
         <button
           type="button"
           className="flex items-center justify-center bg-app-primary-orange text-white rounded-lg p-4 animate-bounce"
@@ -20,7 +20,7 @@ const Checkout: NextPage = () => {
           <LoadingSpinner />
           Checkout...
         </button>
-      </main>
+      </div>
     </div>
   );
 };

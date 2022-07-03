@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import PageHeader from '../components/layout/PageHeader';
 import ProductGallery from '../components/product/ProductGallery';
 import ProductInformation from '../components/product/ProductInformation';
 import { productList } from '../data';
@@ -14,19 +13,15 @@ const Home: NextPage = () => {
         <link rel="icon" type="image/png" href="/images/favicon-32x32.png" />
       </Head>
 
-      <PageHeader />
-
-      <main className="">
-        <div className="grid gap-8 m-auto sm:px-4 md:grid-cols-2 md:max-w-6xl">
-          <div className="sm:flex sm:items-center justify-center md:max-w-md">
-            <ProductGallery product={productList[0]} />
-          </div>
-
-          <div className="px-4 sm:flex sm:items-center sm:justify-center md:max-w-md">
-            <ProductInformation product={productList[0]} />
-          </div>
+      <div className="grid gap-8 m-auto sm:px-4 md:grid-cols-2 md:max-w-6xl">
+        <div className="sm:flex sm:items-center justify-center md:max-w-md">
+          <ProductGallery product={productList[0]} />
         </div>
-      </main>
+
+        <div className="px-4 sm:flex sm:items-center sm:justify-center md:max-w-md">
+          <ProductInformation product={productList[0]} />
+        </div>
+      </div>
     </div>
   );
 };
