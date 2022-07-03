@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Image from 'next/image';
 import CartItem from './CartItem';
-import { CartContext } from '../../context/CartContext';
+import { CartContext } from '../../store/CartContext';
 
 const Cart: React.FC = () => {
   const cartCtx = useContext(CartContext);
@@ -60,9 +60,11 @@ const Cart: React.FC = () => {
                 </ul>
               )}
 
-              <button className="text-white font-bold rounded-lg p-3 bg-app-primary-orange">
-                Checkout
-              </button>
+              {cartCtx?.cartItems.length !== 0 && (
+                <button className="text-white font-bold rounded-lg p-3 bg-app-primary-orange">
+                  Checkout
+                </button>
+              )}
             </div>
           </div>
         </div>

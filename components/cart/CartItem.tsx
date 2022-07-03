@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { IProduct } from '../../data';
-import { CartContext } from '../../context/CartContext';
+import { CartContext } from '../../store/CartContext';
 
 const CartItem: React.FC<IProduct> = (props) => {
   const cartCtx = useContext(CartContext);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartContextType, IProduct, productList } from '../data';
+import { CartContextType, IProduct } from '../data';
 
 export const CartContext = React.createContext<CartContextType | null>(null);
 
@@ -8,7 +8,7 @@ type CartProviderProps = {
 };
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const [cartItems, setCartItems] = React.useState<IProduct[]>(productList);
+  const [cartItems, setCartItems] = React.useState<IProduct[]>([]);
 
   const addProduct = (newCartItem: IProduct) => {
     // Check if product already exists in cart

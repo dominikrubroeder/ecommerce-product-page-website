@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { IProduct } from '../data';
 import Image from 'next/image';
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../store/CartContext';
 
 interface ProductInformationProps {
   product: IProduct;
@@ -9,6 +9,7 @@ interface ProductInformationProps {
 
 const ProductInformation: React.FC<ProductInformationProps> = (props) => {
   const cartCtx = useContext(CartContext);
+  const product = props.product;
   const [amount, setAmount] = useState(0);
 
   const increaseAmount = () => {
@@ -28,34 +29,34 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
       <div className="grid gap-8">
         <header className="grid gap-2">
           <h2 className="uppercase text-app-primary-orange text-xs tracking-wider">
-            {props.product.manufacturer}
+            {product.manufacturer}
           </h2>
-          <h1 className="text-3xl font-bold">{props.product.title}</h1>
+          <h1 className="text-3xl font-bold">{product.title}</h1>
         </header>
 
         <p className="text-app-neutral-blue-grayish-dark">
-          {props.product.description}
+          {product.description}
         </p>
 
         <div className="grid gap-1">
           <div className="flex items-center gap-4">
             <span className="text-xl font-bold">
               $
-              {props.product.discount
-                ? (props.product.value * props.product.discount).toFixed(2)
-                : props.product.value.toFixed(2)}
+              {product.discount
+                ? (product.value * product.discount).toFixed(2)
+                : product.value.toFixed(2)}
             </span>
 
-            {props.product.discount && (
+            {product.discount && (
               <span className="text-app-primary-orange bg-app-primary-orange/10 font-bold text-xs p-1 rounded-md">
-                {props.product.discount * 100}%
+                {product.discount * 100}%
               </span>
             )}
           </div>
 
-          {props.product.discount && (
+          {product.discount && (
             <p className="text-app-neutral-blue-grayish-dark line-through">
-              ${props.product.value.toFixed(2)}
+              ${product.value.toFixed(2)}
             </p>
           )}
         </div>
@@ -63,7 +64,11 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
         <div className="flex items-center gap-4">
           <div className="bg-app-neutral-blue-grayish-light rounded-lg">
             <button
-              className="p-4 font-bold text-app-primary-orange"
+              className={`p-4 font-bold ${
+                amount === 0
+                  ? 'text-app-primary-orange/25 cursor-not-allowed'
+                  : 'text-app-primary-orange'
+              }`}
               onClick={decreaseAmount}
             >
               -
@@ -78,7 +83,11 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
               onChange={(e) => setAmount(+e.target.value)}
             />
             <button
-              className="p-4 font-bold rounded-tr-x rounded- text-app-primary-orange"
+              className={`p-4 font-bold ${
+                amount === 5
+                  ? 'text-app-primary-orange/25 cursor-not-allowed'
+                  : 'text-app-primary-orange'
+              }`}
               onClick={increaseAmount}
             >
               +
@@ -86,22 +95,32 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
           </div>
 
           <button
-            className="text-white font-bold rounded-lg p-4 bg-app-primary-orange flex items-center justify-center gap-2 flex-1"
+            className={`font-bold rounded-lg p-4 flex-1 ${
+              amount === 0
+                ? 'cursor-not-allowed bg-app-primary-orange/10 text-app-primary-orange/25'
+                : 'text-white cursor-pointer bg-app-primary-orange'
+            }`}
             onClick={() =>
               cartCtx?.addProduct({
-                ...props.product,
+                ...product,
                 amount,
               })
             }
             disabled={amount === 0}
           >
-            <Image
-              src="/images/icon-cart-white.svg"
-              width={22}
-              height={20}
-              alt="Cart icon"
-            />
-            <span>Add to cart</span>
+            {amount === 0 && <span>Increase amount to buy</span>}
+
+            {amount > 0 && (
+              <span className="flex items-center justify-center gap-2">
+                <Image
+                  src="/images/icon-cart-white.svg"
+                  width={22}
+                  height={20}
+                  alt="Cart icon"
+                />
+                <span>Add to cart</span>
+              </span>
+            )}
           </button>
         </div>
       </div>

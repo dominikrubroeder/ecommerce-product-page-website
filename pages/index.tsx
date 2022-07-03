@@ -3,7 +3,7 @@ import Head from 'next/head';
 import PageHeader from '../components/layout/PageHeader';
 import ProductGallery from '../components/ProductGallery';
 import ProductInformation from '../components/ProductInformation';
-import { cartItemsData } from '../data';
+import { productList } from '../data';
 
 const Home: NextPage = () => {
   return (
@@ -19,11 +19,11 @@ const Home: NextPage = () => {
       <main className="">
         <div className="grid gap-8 m-auto px-4 md:grid-cols-2 md:max-w-6xl">
           <div className="flex items-center justify-center max-w-md">
-            <ProductGallery product={cartItemsData[0]} />
+            <ProductGallery product={productList[0]} />
           </div>
 
           <div className="flex items-center justify-center max-w-md">
-            <ProductInformation product={cartItemsData[0]} />
+            <ProductInformation product={productList[0]} />
           </div>
         </div>
       </main>

@@ -1,3 +1,9 @@
+export type CartContextType = {
+  cartItems: IProduct[];
+  addProduct: (product: IProduct) => void;
+  deleteProduct: (productId: string) => void;
+};
+
 export interface IProduct {
   id: string;
   title: string;
@@ -9,12 +15,6 @@ export interface IProduct {
   manufacturer: string;
   discount: number;
 }
-
-export type CartContextType = {
-  cartItems: IProduct[];
-  addProduct: (product: IProduct) => void;
-  deleteProduct: (productId: string) => void;
-};
 
 export const productList: IProduct[] = [
   {
@@ -40,8 +40,6 @@ export const productList: IProduct[] = [
     discount: 0.5,
   },
 ];
-
-export const cartItemsData: IProduct[] = [productList[0]];
 
 export const navigationData = [
   {
