@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { IProduct } from '../data';
+import { IProduct } from '../../data';
 
 interface ProductGalleryProps {
   product: IProduct;
@@ -24,7 +24,11 @@ const ProductGallery: React.FC<ProductGalleryProps> = (props) => {
           {props.product.thumbnails.map((thumbnail, index) => (
             <li
               key={index}
-              className="cursor-pointer"
+              className={`flex items-center justify-center cursor-pointer border-4 rounded-xl transition-all hover:opacity-75 ${
+                index === activeImage
+                  ? 'border-app-primary-orange opacity-60'
+                  : 'border-transparent'
+              }`}
               onClick={() => setActiveImage(index)}
             >
               <Image
@@ -32,7 +36,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = (props) => {
                 width={100}
                 height={100}
                 alt={props.product.title}
-                className="rounded-xl"
+                className="rounded-lg"
               />
             </li>
           ))}

@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import PageHeader from '../components/layout/PageHeader';
-import ProductGallery from '../components/ProductGallery';
-import ProductInformation from '../components/ProductInformation';
+import ProductGallery from '../components/product/ProductGallery';
+import ProductInformation from '../components/product/ProductInformation';
 import { productList } from '../data';
 
 const Home: NextPage = () => {
@@ -18,11 +18,11 @@ const Home: NextPage = () => {
 
       <main className="">
         <div className="grid gap-8 m-auto px-4 md:grid-cols-2 md:max-w-6xl">
-          <div className="flex items-center justify-center max-w-md">
+          <div className="flex items-center justify-center md:max-w-md">
             <ProductGallery product={productList[0]} />
           </div>
 
-          <div className="flex items-center justify-center max-w-md">
+          <div className="flex items-center justify-center md:max-w-md">
             <ProductInformation product={productList[0]} />
           </div>
         </div>

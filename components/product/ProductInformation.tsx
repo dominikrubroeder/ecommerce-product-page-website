@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { IProduct } from '../data';
+import { IProduct } from '../../data';
 import Image from 'next/image';
-import { CartContext } from '../store/CartContext';
+import { CartContext } from '../../store/CartContext';
 
 interface ProductInformationProps {
   product: IProduct;
@@ -95,10 +95,10 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
           </div>
 
           <button
-            className={`font-bold rounded-lg p-4 flex-1 ${
+            className={`font-bold rounded-lg p-4 flex-1 shadow-lg transition-all ${
               amount === 0
-                ? 'cursor-not-allowed bg-app-primary-orange/10 text-app-primary-orange/25'
-                : 'text-white cursor-pointer bg-app-primary-orange'
+                ? 'cursor-not-allowed bg-app-primary-orange/10 text-app-primary-orange/25 shadow-app-primary-orange/5'
+                : 'text-white cursor-pointer bg-app-primary-orange shadow-app-primary-orange/50 hover:opacity-70'
             }`}
             onClick={() =>
               cartCtx?.addProduct({
