@@ -34,6 +34,8 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
       amount,
     });
 
+    cartCtx?.isOpenHandler('open');
+
     setTimeout(() => {
       cartHTMLElement?.classList.remove('animate-ping');
     }, 1000);

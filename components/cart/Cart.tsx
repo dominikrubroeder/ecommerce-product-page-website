@@ -6,14 +6,13 @@ import Link from 'next/link';
 
 const Cart: React.FC = () => {
   const cartCtx = useContext(CartContext);
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="relative">
       <div
         id="cart"
-        className="absolute -top-1 -right-2 z-40 flex items-center text-white text-[8px] bg-app-primary-orange px-2 rounded-full cursor-pointer transition-all"
-        onClick={() => setIsOpen((previousState) => !previousState)}
+        className="absolute -top-1 -right-2 flex items-center text-white text-[8px] bg-app-primary-orange px-2 rounded-full cursor-pointer transition-all z-50"
+        onClick={() => cartCtx?.isOpenHandler('toggle')}
       >
         {cartCtx?.cartItems.length}
       </div>
@@ -24,10 +23,10 @@ const Cart: React.FC = () => {
         height={20}
         alt="Cart icon"
         className="cursor-pointer"
-        onClick={() => setIsOpen((previousState) => !previousState)}
+        onClick={() => cartCtx?.isOpenHandler('toggle')}
       />
 
-      {isOpen && (
+      {cartCtx?.isOpen && (
         <div className="fixed top-16 left-0 right-0 drop-shadow-lg rounded-md bg-white m-2 z-50 sm:absolute sm:top-8 sm:right-0 sm:left-auto sm:w-80 sm:m-auto">
           <header className="border-b">
             <div className="font-bold p-4">Cart</div>
@@ -72,6 +71,13 @@ const Cart: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {cartCtx?.isOpen && (
+        <div
+          className="fixed inset-0 bg-white/0 w-screen h-screen cursor-pointer z-40"
+          onClick={() => cartCtx.isOpenHandler('close')}
+        ></div>
       )}
     </div>
   );

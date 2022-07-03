@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CartContextType, IProduct } from '../data';
 
 export const CartContext = React.createContext<CartContextType | null>(null);
@@ -9,6 +9,7 @@ type CartProviderProps = {
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cartItems, setCartItems] = React.useState<IProduct[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const addProduct = (newCartItem: IProduct) => {
     // Check if product already exists in cart
@@ -31,8 +32,24 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     );
   };
 
+  const isOpenHandler = (actionType: string) => {
+    if (actionType === 'open') {
+      setIsOpen(true);
+    }
+
+    if (actionType === 'close') {
+      setIsOpen(false);
+    }
+
+    if (actionType === 'toggle') {
+      setIsOpen((previousState) => !previousState);
+    }
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addProduct, deleteProduct }}>
+    <CartContext.Provider
+      value={{ cartItems, isOpen, isOpenHandler, addProduct, deleteProduct }}
+    >
       {children}
     </CartContext.Provider>
   );

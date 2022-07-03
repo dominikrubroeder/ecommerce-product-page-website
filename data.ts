@@ -1,5 +1,7 @@
 export type CartContextType = {
   cartItems: IProduct[];
+  isOpen: boolean;
+  isOpenHandler: (actionType: string) => void;
   addProduct: (product: IProduct) => void;
   deleteProduct: (productId: string) => void;
 };
