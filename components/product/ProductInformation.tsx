@@ -46,10 +46,10 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
   return (
     <div className="grid gap-8 mb-4 sm:mb-8 md:mb-0">
       <header className="grid gap-2">
-        <h2 className="uppercase text-app-primary-orange text-xs tracking-wider">
+        <h2 className="uppercase text-app-primary-orange text-xs tracking-widest font-bold">
           {product.manufacturer}
         </h2>
-        <h1 className="text-3xl font-bold">{product.title}</h1>
+        <h1 className="text-4xl font-bold">{product.title}</h1>
       </header>
 
       <p className="text-app-neutral-blue-grayish-dark">
@@ -58,7 +58,7 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
 
       <div className="flex items-center justify-between sm:grid sm:gap-1">
         <div className="flex items-center gap-4">
-          <span className="text-xl font-bold">
+          <span className="text-2xl font-bold">
             $
             {product.discount
               ? (product.value * product.discount).toFixed(2)

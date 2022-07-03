@@ -14,13 +14,15 @@ const PageHeader: React.FC = () => {
         </div>
 
         <Link href="/">
-          <Image
-            src="/images/logo.svg"
-            width={137.5}
-            height={20}
-            alt="E-commerce product page logo"
-            className="cursor-pointer"
-          />
+          <a>
+            <Image
+              src="/images/logo.svg"
+              width={137.5}
+              height={20}
+              alt="E-commerce product page logo"
+              className="cursor-pointer"
+            />
+          </a>
         </Link>
 
         <div className="hidden sm:inline-block">
