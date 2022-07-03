@@ -24,6 +24,21 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
     setAmount((previousState) => previousState - 1);
   };
 
+  const addToCartHandler = () => {
+    const cartHTMLElement = document.getElementById('cart');
+
+    cartHTMLElement?.classList.add('animate-ping');
+
+    cartCtx?.addProduct({
+      ...product,
+      amount,
+    });
+
+    setTimeout(() => {
+      cartHTMLElement?.classList.remove('animate-ping');
+    }, 1000);
+  };
+
   return (
     <div>
       <div className="grid gap-8">
@@ -100,12 +115,7 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
                 ? 'cursor-not-allowed bg-app-primary-orange/10 text-app-primary-orange/25 shadow-app-primary-orange/5'
                 : 'text-white cursor-pointer bg-app-primary-orange shadow-app-primary-orange/50 hover:opacity-70'
             }`}
-            onClick={() =>
-              cartCtx?.addProduct({
-                ...product,
-                amount,
-              })
-            }
+            onClick={addToCartHandler}
             disabled={amount === 0}
           >
             {amount === 0 && <span>Increase amount to buy</span>}

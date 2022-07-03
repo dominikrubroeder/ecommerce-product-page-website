@@ -11,7 +11,8 @@ const Cart: React.FC = () => {
   return (
     <div className="relative">
       <div
-        className="absolute -top-1 -right-2 z-40 flex items-center text-white text-[8px] bg-app-primary-orange px-2 rounded-full cursor-pointer"
+        id="cart"
+        className="absolute -top-1 -right-2 z-40 flex items-center text-white text-[8px] bg-app-primary-orange px-2 rounded-full cursor-pointer transition-all"
         onClick={() => setIsOpen((previousState) => !previousState)}
       >
         {cartCtx?.cartItems.length}

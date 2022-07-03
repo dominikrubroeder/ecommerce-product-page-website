@@ -14,6 +14,9 @@ module.exports = {
         'app-neutral-blue-grayish-dark': 'hsl(219, 9%, 45%)',
         'app-neutral-blue-grayish-light': 'hsl(223, 64%, 98%)',
       },
+      animation: {
+        ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1)',
+      },
     },
   },
   plugins: [],
