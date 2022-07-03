@@ -39,10 +39,12 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
     setTimeout(() => {
       cartHTMLElement?.classList.remove('animate-ping');
     }, 1000);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="grid gap-8">
+    <div className="grid gap-8 mb-4 sm:mb-8 md:mb-0">
       <header className="grid gap-2">
         <h2 className="uppercase text-app-primary-orange text-xs tracking-wider">
           {product.manufacturer}

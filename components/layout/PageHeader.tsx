@@ -3,21 +3,25 @@ import Image from 'next/image';
 import Cart from '../cart/Cart';
 import PageNavigation from './PageNavigation';
 import Sidebar from './Sidebar';
+import Link from 'next/link';
 
 const PageHeader: React.FC = () => {
   return (
-    <header className="flex items-center justify-between gap-2 max-w-screen-xl m-auto border-b py-2 px-4 sm:mb-4 sm:px-2 sm:py-0 md:mb-16">
+    <header className="sticky top-0 flex items-center justify-between gap-2 max-w-screen-xl m-auto border-b py-2 px-4 z-40 bg-white sm:mb-4 sm:px-2 sm:py-0 md:mb-16">
       <div className="flex items-center gap-4 sm:gap-8">
         <div className="sm:hidden">
           <Sidebar />
         </div>
 
-        <Image
-          src="/images/logo.svg"
-          width={137.5}
-          height={20}
-          alt="E-commerce product page logo"
-        />
+        <Link href="/">
+          <Image
+            src="/images/logo.svg"
+            width={137.5}
+            height={20}
+            alt="E-commerce product page logo"
+            className="cursor-pointer"
+          />
+        </Link>
 
         <div className="hidden sm:inline-block">
           <PageNavigation />

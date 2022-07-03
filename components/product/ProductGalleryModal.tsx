@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { IProduct } from '../../data';
+import NextArrow from '../slider/NextArrow';
+import PreviousArrow from '../slider/PreviousArrow';
 
 interface ProductGalleryModalProps {
   product: IProduct;
@@ -37,17 +39,7 @@ const ProductGalleryModal: React.FC<ProductGalleryModalProps> = (props) => {
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
       <div className="grid gap-8 z-50">
         <div className="flex items-center justify-center">
-          <button
-            className="flex items-center justify-center w-12 h-12 bg-white rounded-full translate-x-1/2 z-50"
-            onClick={previousImageHandler}
-          >
-            <Image
-              src="/images/icon-previous.svg"
-              width={8}
-              height={16}
-              alt="Icon previous"
-            />
-          </button>
+          <PreviousArrow onClick={previousImageHandler} />
 
           <Image
             width={500}
@@ -57,17 +49,7 @@ const ProductGalleryModal: React.FC<ProductGalleryModalProps> = (props) => {
             className="rounded-xl"
           />
 
-          <button
-            className="flex items-center justify-center w-12 h-12 bg-white rounded-full -translate-x-1/2 z-50"
-            onClick={nextImageHandler}
-          >
-            <Image
-              src="/images/icon-next.svg"
-              width={8}
-              height={16}
-              alt="Icon next"
-            />
-          </button>
+          <NextArrow onClick={nextImageHandler} />
         </div>
 
         <nav className="hidden md:flex md:items-start md:justify-center">

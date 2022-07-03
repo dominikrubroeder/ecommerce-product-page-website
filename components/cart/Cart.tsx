@@ -75,7 +75,7 @@ const Cart: React.FC = () => {
 
       {cartCtx?.isOpen && (
         <div
-          className="fixed inset-0 bg-white/0 w-screen h-screen cursor-pointer z-40"
+          className="fixed inset-0 bg-black/25 w-screen h-screen cursor-pointer z-40"
           onClick={() => cartCtx.isOpenHandler('close')}
         ></div>
       )}
