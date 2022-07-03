@@ -96,11 +96,10 @@ const ProductInformation: React.FC<ProductInformationProps> = (props) => {
             disabled={amount === 0}
           >
             <Image
-              src="/images/icon-cart.svg"
+              src="/images/icon-cart-white.svg"
               width={22}
               height={20}
               alt="Cart icon"
-              className="brightness-0 invert-1"
             />
             <span>Add to cart</span>
           </button>

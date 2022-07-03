@@ -13,15 +13,13 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const addProduct = (newCartItem: IProduct) => {
     // Check if product already exists in cart
     if (cartItems.some((cartItem) => cartItem.id === newCartItem.id)) {
-      const existingProductIndex = cartItems.findIndex(
-        (cartItem) => cartItem.id === newCartItem.id
-      );
-      const updatedCartItems = [
-        ...cartItems,
-        (cartItems[existingProductIndex].amount += newCartItem.amount),
-      ];
-
-      // setCartItems(previousState => updatedCartItems)
+      // Do not add as new product, but increase amount of already existing product in cart by the selected amount
+      cartItems.filter((cartItem: IProduct) => {
+        if (cartItem.id === newCartItem.id) {
+          cartItem.amount += newCartItem.amount;
+          setCartItems([...cartItems]);
+        }
+      });
     } else {
       setCartItems((previousState) => [...previousState, newCartItem]);
     }
