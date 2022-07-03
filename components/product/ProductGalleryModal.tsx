@@ -37,7 +37,7 @@ const ProductGalleryModal: React.FC<ProductGalleryModalProps> = (props) => {
 
   return (
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-      <div className="grid gap-8 z-50">
+      <div className="grid gap-8 z-50 transition-all animate-scale">
         <div className="flex items-center justify-center">
           <PreviousArrow onClick={previousImageHandler} />
 
