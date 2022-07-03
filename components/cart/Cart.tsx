@@ -11,7 +11,7 @@ const Cart: React.FC = () => {
     <div className="relative">
       <div
         id="cart"
-        className="absolute -top-1 -right-2 flex items-center text-white text-[8px] bg-app-primary-orange px-2 rounded-full cursor-pointer transition-all z-50"
+        className="absolute -top-1 -right-2 flex items-center text-white text-[8px] bg-app-primary-orange px-2 rounded-full cursor-pointer transition-all z-30"
         onClick={() => cartCtx?.isOpenHandler('toggle')}
       >
         {cartCtx?.cartItems.length}
