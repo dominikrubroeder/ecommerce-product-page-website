@@ -33,7 +33,7 @@ const Cart: React.FC = () => {
       />
 
       {cartCtx?.isOpen && (
-        <div className="fixed top-16 left-0 right-0 drop-shadow-lg rounded-md bg-white m-2 z-50 sm:absolute sm:top-8 sm:right-0 sm:left-auto sm:w-80 sm:m-auto">
+        <div className="fixed top-16 left-0 right-0 drop-shadow-lg rounded-md bg-white m-2 z-50 animate-fadeUp sm:absolute sm:top-8 sm:right-0 sm:left-auto sm:w-80 sm:m-auto">
           <header className="border-b">
             <div className="font-bold p-4">Cart</div>
           </header>

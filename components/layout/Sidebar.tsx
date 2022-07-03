@@ -18,7 +18,7 @@ const Sidebar: React.FC = () => {
 
       {isOpen && (
         <div>
-          <div className="fixed left-0 top-0 h-screen p-4 max-w-xs w-full bg-white z-50 sm:hidden">
+          <div className="fixed left-0 top-0 h-screen p-4 max-w-xs w-full bg-white z-50 animate-fadeToRight sm:hidden">
             <header className="pb-8">
               <Image
                 src="/images/icon-close.svg"

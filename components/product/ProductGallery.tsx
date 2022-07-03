@@ -53,7 +53,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = (props) => {
           height={640}
           src={props.product.images[activeImage]}
           alt={props.product.title}
-          className="sm:hover:cursor-zoom-in sm:rounded-xl"
+          className="animate-hidden animate-scale sm:hover:cursor-zoom-in sm:rounded-xl"
           onClick={openProductGalleryModal}
         />
 
@@ -75,7 +75,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = (props) => {
           {props.product.thumbnails.map((thumbnail, index) => (
             <li
               key={index}
-              className={`flex items-center justify-center cursor-pointer border-4 rounded-xl transition-all hover:opacity-75 ${
+              className={`flex items-center justify-center cursor-pointer border-4 rounded-xl transition-all animate-hidden animate-fadeUp animation-delay-200 hover:opacity-75 ${
                 index === activeImage
                   ? 'border-app-primary-orange opacity-60'
                   : 'border-transparent'
