@@ -17,12 +17,12 @@ const Home: NextPage = () => {
       <PageHeader />
 
       <main className="">
-        <div className="grid gap-8 m-auto px-4 md:grid-cols-2 md:max-w-6xl">
-          <div className="flex items-center justify-center md:max-w-md">
+        <div className="grid gap-8 m-auto sm:px-4 md:grid-cols-2 md:max-w-6xl">
+          <div className="sm:flex sm:items-center justify-center md:max-w-md">
             <ProductGallery product={productList[0]} />
           </div>
 
-          <div className="flex items-center justify-center md:max-w-md">
+          <div className="px-4 sm:flex sm:items-center sm:justify-center md:max-w-md">
             <ProductInformation product={productList[0]} />
           </div>
         </div>

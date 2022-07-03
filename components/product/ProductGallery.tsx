@@ -13,13 +13,13 @@ const ProductGallery: React.FC<ProductGalleryProps> = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="grid gap-8">
+    <div className="grid gap-8 max-w">
       <Image
-        width={500}
-        height={500}
+        width={640}
+        height={640}
         src={props.product.images[activeImage]}
         alt={props.product.title}
-        className="rounded-xl hover:cursor-zoom-in"
+        className="hover:cursor-zoom-in sm:rounded-xl"
         onClick={() => setShowModal(true)}
       />
 

@@ -6,8 +6,8 @@ import Sidebar from './Sidebar';
 
 const PageHeader: React.FC = () => {
   return (
-    <header className="flex items-center justify-between gap-2 max-w-screen-xl m-auto border-b px-2 mb-16 sm:px-2">
-      <div className="flex items-center gap-8">
+    <header className="flex items-center justify-between gap-2 max-w-screen-xl m-auto border-b py-2 px-4 sm:mb-4 sm:px-2 sm:py-0 md:mb-16">
+      <div className="flex items-center gap-4 sm:gap-8">
         <div className="sm:hidden">
           <Sidebar />
         </div>
